@@ -60,7 +60,7 @@ class Search(object):
 		if self.should_post():
 			self.post()
 		else:
-			logger.info('Already posted in thread: ' + self.submission.permalink)
+			logger.info('Already posted or excluded: ' + self.submission.permalink)
 
 	def should_post(self):
 		if self.submission.subreddit.lower() in exclusions:
