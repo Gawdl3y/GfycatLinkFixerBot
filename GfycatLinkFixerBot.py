@@ -19,7 +19,12 @@ class Search(object):
 	message = (
 		'[Fixed Gfycat Link (HTML5 & GIF)](http://gfycat.com/{slug})\n\n'
 		'*****\n'
-		'[About](http://www.reddit.com/r/GfycatLinkFixerBot/wiki/index) | Problems? Message /u/Gawdl3y or post in /r/GfycatLinkFixerBot.'
+		'[About](http://www.reddit.com/r/GfycatLinkFixerBot/wiki/index) |\n'
+		'[Banlist](http://www.reddit.com/r/GfycatLinkFixerBot/wiki/banlist) |\n'
+		'[Code](https://github.com/Gawdl3y/GfycatLinkFixerBot) |\n'
+		'[Subreddit](http://www.reddit.com/r/GfycatLinkFixerBot) |\n'
+		'Owner: /u/' + config.get('General', 'owner') + '  '
+		'Problems? Please message the owner or post in the subreddit.'
 	)
 
 	def __init__(self, submission):
