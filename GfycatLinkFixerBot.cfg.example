@@ -15,7 +15,7 @@ consolelevel: 10
 ; The format of the log message
 format: [%%(asctime)s - %%(levelname)s] %%(message)s
 ; The date format to use
-dateformat: %%m/%%d/%%Y %%H:%%M:%%S
+dateformat: %%Y-%%m-&&d %%H:%%M:%%S
 
 
 [Reddit]
