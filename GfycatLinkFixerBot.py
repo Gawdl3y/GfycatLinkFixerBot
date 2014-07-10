@@ -63,7 +63,7 @@ class Search(object):
 			logger.info('Already posted or excluded: ' + self.submission.permalink)
 
 	def should_post(self):
-		if str(self.submission.subreddit).lower() in exclusions:
+		if str(self.submission.subreddit).lower() in self.exclusions:
 			return False
 		for comment in self.submission.comments:
 			if comment.author.id == r.user.id:
