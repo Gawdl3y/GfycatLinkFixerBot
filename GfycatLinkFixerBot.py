@@ -17,7 +17,7 @@ print('Logged in to Reddit as ' + r.user.name)
 class Search(object):
 	pattern = re.compile('^https?://(zippy|fat|giant)\.gfycat\.com/([a-z]+)\.gif$', re.IGNORECASE)
 	message = (
-		'[Gfycat HTML5 version](http://gfycat.com/{slug})\n\n'
+		'[Fixed Gfycat Link (HTML5 + GIF)](http://gfycat.com/{slug})\n\n'
 		'*****\n'
 		'[About](http://www.reddit.com/r/GfycatLinkFixerBot/comments/2aaiiv/about_gfycatlinkfixerbot/) | Problems? Message /u/Gawdl3y.'
 	)
