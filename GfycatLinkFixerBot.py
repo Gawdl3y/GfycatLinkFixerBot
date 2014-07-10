@@ -8,6 +8,8 @@ from requests.exceptions import HTTPError, ConnectionError, Timeout
 from socket import timeout
 from threading import Thread
 
+VERSION = '1.2'
+
 # Read the config file
 config = configparser.ConfigParser()
 config.read('GfycatLinkFixerBot.cfg')
@@ -30,7 +32,7 @@ if log_file:
 	logger.addHandler(file_handler)
 
 # Connect to Reddit
-r = praw.Reddit(user_agent = 'Gfycat Link Fixer Bot v1.2 by /u/Gawdl3y')
+r = praw.Reddit(user_agent = 'Gfycat Link Fixer Bot v' + VERSION + ' by /u/Gawdl3y')
 r.login(config.get('Reddit', 'username'), config.get('Reddit', 'password'))
 logger.info('Logged in to Reddit as ' + r.user.name)
 
@@ -39,6 +41,7 @@ class Search(object):
 	message = (
 		'[Fixed Gfycat Link (HTML5 & GIF)](http://gfycat.com/{slug})\n\n'
 		'*****\n'
+		'v' + VERSION + ' |\n'
 		'[About](http://www.reddit.com/r/GfycatLinkFixerBot/wiki/index) |\n'
 		'[Banlist](http://www.reddit.com/r/GfycatLinkFixerBot/wiki/banlist) |\n'
 		'[Code](https://github.com/Gawdl3y/GfycatLinkFixerBot) |\n'
