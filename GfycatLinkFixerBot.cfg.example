@@ -24,3 +24,5 @@ username: SomeMegaCoolUser
 password: themostsecurepasswordintheworld
 ; The subreddit to operate in
 subreddit: all
+; A list of subreddits to exclude (for when using /r/all), separated by spaces
+exclude: aww blah chicken coolstuff

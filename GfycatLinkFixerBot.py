@@ -8,7 +8,7 @@ from requests.exceptions import HTTPError, ConnectionError, Timeout
 from socket import timeout
 from threading import Thread
 
-VERSION = '1.3'
+VERSION = '1.4'
 
 # Read the config file
 config = configparser.ConfigParser()
@@ -50,22 +50,25 @@ class Search(object):
 		'Problems? Please message the owner or post in the subreddit.'
 	)
 	retry_sleep = config.get('General', 'retrytime')
+	exclusions = config.get('Reddit', 'exclude').strip().lower().split()
 
 	def __init__(self, submission):
 		self.submission = submission
 		self.match = Search.pattern.match(submission.url)
 
 	def run(self):
-		if not self.has_posted():
+		if self.should_post():
 			self.post()
 		else:
 			logger.info('Already posted in thread: ' + self.submission.permalink)
 
-	def has_posted(self):
+	def should_post(self):
+		if self.submission.subreddit.lower() in exclusions:
+			return False
 		for comment in self.submission.comments:
 			if comment.author.id == r.user.id:
-				return True
-		return False
+				return False
+		return True
 
 	def post(self):
 		while True:
