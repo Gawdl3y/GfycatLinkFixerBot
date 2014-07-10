@@ -1,6 +1,24 @@
 [General]
+; The reddit username of the owner of the bot
 owner: BobMalooga
+; The time to wait before retrying a comment when an error occurs
+retrytime: 60
+
+
+[Logging]
+; The name of the log file - leave blank to disable
+file: GfycatLinkFixerBot.log
+; The level to log to the file - use 10 for debug, 20 for info, 30 for warning, 40 for error, 50 for critical
+filelevel: 20
+; The level to display in the console - use 10 for debug, 20 for info, 30 for warning, 40 for error, 50 for critical
+consolelevel: 10
+; The format of the log message
+format: [%%(asctime)s - %%(levelname)s] %%(message)s
+; The date format to use
+dateformat: %%m/%%d/%%Y %%H:%%M:%%S
+
 
 [Reddit]
+; The reddit account info for the bot to use
 username: SomeMegaCoolUser
 password: themostsecurepasswordintheworld
