@@ -8,7 +8,7 @@ from requests.exceptions import HTTPError, ConnectionError, Timeout
 from socket import timeout
 from threading import Thread
 
-VERSION = '1.2'
+VERSION = '1.3'
 
 # Read the config file
 config = configparser.ConfigParser()
@@ -94,7 +94,7 @@ class Search(object):
 				time.sleep(self.retry_sleep)
 
 def main():
-	submissions = praw.helpers.submission_stream(r, 'all', limit = None)
+	submissions = praw.helpers.submission_stream(r, config.get('Reddit', 'subreddit'), limit = None)
 	for submission in submissions:
 		search = Search(submission)
 		if search.match is not None:

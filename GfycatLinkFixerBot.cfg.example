@@ -22,3 +22,5 @@ dateformat: %%Y-%%m-%%d %%H:%%M:%%S
 ; The reddit account info for the bot to use
 username: SomeMegaCoolUser
 password: themostsecurepasswordintheworld
+; The subreddit to operate in
+subreddit: all
