@@ -77,7 +77,7 @@ class Search(object):
 				logger.warning('Rate limit exceeded; retrying in ' + str(e.sleep_time) + ' seconds')
 				time.sleep(e.sleep_time)
 			except HTTPError as e:
-				if e.code == 403:
+				if e.response.status_code == 403:
 					logger.error('Forbidden from posting comment: ' + self.submission.permalink)
 					return
 				else:
