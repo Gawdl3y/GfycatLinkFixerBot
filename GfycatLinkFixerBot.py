@@ -10,7 +10,7 @@ config = configparser.ConfigParser()
 config.read('GfycatLinkFixerBot.cfg')
 
 # Connect to Reddit
-r = praw.Reddit(user_agent = 'Gfycat Link Fixer Bot v1.0 by /u/Gawdl3y')
+r = praw.Reddit(user_agent = 'Gfycat Link Fixer Bot v1.1 by /u/Gawdl3y')
 r.login(config.get('Reddit', 'username'), config.get('Reddit', 'password'))
 print('Logged in to Reddit as ' + r.user.name)
 
@@ -19,9 +19,7 @@ class Search(object):
 	message = (
 		'[Gfycat HTML5 version](http://gfycat.com/{slug})\n\n'
 		'*****\n'
-		'This link submission directly linked to the GIF version on Gfycat.\n'
-		'The link above goes to the proper Gfycat page with both GIF and HTML5 versions.\n'
-		'Problems? Please message /u/Gawdl3y.'
+		'[About](http://www.reddit.com/r/GfycatLinkFixerBot/comments/2aaiiv/about_gfycatlinkfixerbot/) | Problems? Message /u/Gawdl3y.'
 	)
 
 	def __init__(self, submission):
