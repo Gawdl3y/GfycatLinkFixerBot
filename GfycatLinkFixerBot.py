@@ -84,7 +84,7 @@ class Search(object):
 					logger.error('Forbidden from posting comment: ' + self.submission.permalink)
 					return
 				else:
-					logger.warning('API error when posting comment; retrying in ' + str(self.retry_sleep) + ' seconds: ' + self.submission.permalink)
+					logger.warning('HTTP error when posting comment; retrying in ' + str(self.retry_sleep) + ' seconds: ' + self.submission.permalink)
 					logger.warning(e)
 					time.sleep(self.retry_sleep)
 			except (ConnectionError, Timeout, timeout) as e:
