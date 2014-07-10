@@ -46,7 +46,7 @@ class Search(object):
 		'[Banlist](http://www.reddit.com/r/GfycatLinkFixerBot/wiki/banlist) |\n'
 		'[Code](https://github.com/Gawdl3y/GfycatLinkFixerBot) |\n'
 		'[Subreddit](http://www.reddit.com/r/GfycatLinkFixerBot) |\n'
-		'Owner: /u/' + config.get('General', 'owner') + '  \n'
+		'[Owner](http://www.reddit.com/user/' + config.get('General', 'owner') + ')  \n'
 		'Problems? Please message the owner or post in the subreddit.'
 	)
 	retry_sleep = config.get('General', 'retrytime')
