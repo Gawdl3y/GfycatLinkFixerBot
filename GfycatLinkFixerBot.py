@@ -92,9 +92,13 @@ class Search(object):
 				logger.warning(e)
 				time.sleep(self.retry_sleep)
 			except APIException as e:
-				logger.warning('API error when posting comment; retrying in ' + str(self.retry_sleep) + ' seconds: ' + self.submission.permalink)
-				logger.warning(e)
-				time.sleep(self.retry_sleep)
+				if e.error_type == 'DELETED_LINK':
+					logger.warning('Link deleted when posting comment: ' + self.submission.permalink)
+					return
+				else:
+					logger.warning('API error when posting comment; retrying in ' + str(self.retry_sleep) + ' seconds: ' + self.submission.permalink)
+					logger.warning(e)
+					time.sleep(self.retry_sleep)
 
 def main():
 	submissions = praw.helpers.submission_stream(r, config.get('Reddit', 'subreddit'), limit = None)
