@@ -49,7 +49,7 @@ class Search(object):
 		'[Owner](http://www.reddit.com/user/' + config.get('General', 'owner') + ')  \n'
 		'Problems? Please message the owner or post in the subreddit.'
 	)
-	retry_sleep = config.get('General', 'retrytime')
+	retry_sleep = float(config.get('General', 'retrytime'))
 	exclusions = config.get('Reddit', 'exclude').strip().lower().split()
 
 	def __init__(self, submission):
