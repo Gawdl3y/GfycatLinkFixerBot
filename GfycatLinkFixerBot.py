@@ -8,7 +8,7 @@ from requests.exceptions import HTTPError, ConnectionError, Timeout
 from socket import timeout
 from threading import Thread
 
-VERSION = '1.4'
+VERSION = '1.5'
 
 # Read the config file
 config = configparser.ConfigParser()
@@ -40,14 +40,13 @@ class Search(object):
 	pattern = re.compile('^https?://(zippy|fat|giant)\.gfycat\.com/([a-z]+)\.gif$', re.IGNORECASE)
 	message = (
 		'[Fixed Gfycat Link (HTML5 & GIF)](http://gfycat.com/{slug})\n\n'
-		'*****\n'
-		'v' + VERSION + ' |\n'
-		'[About](http://www.reddit.com/r/GfycatLinkFixerBot/wiki/index) |\n'
-		'[Banlist](http://www.reddit.com/r/GfycatLinkFixerBot/wiki/banlist) |\n'
-		'[Code](https://github.com/Gawdl3y/GfycatLinkFixerBot) |\n'
-		'[Subreddit](http://www.reddit.com/r/GfycatLinkFixerBot) |\n'
-		'[Owner](http://www.reddit.com/user/' + config.get('General', 'owner') + ')  \n'
-		'Problems? Please message the owner or post in the subreddit.'
+		'^v' + VERSION + ' ^|\n'
+		'^[About](http://www.reddit.com/r/GfycatLinkFixerBot/wiki/index) ^|\n'
+		'^[Banlist](http://www.reddit.com/r/GfycatLinkFixerBot/wiki/banlist) ^|\n'
+		'^[Code](https://github.com/Gawdl3y/GfycatLinkFixerBot) ^|\n'
+		'^[Subreddit](http://www.reddit.com/r/GfycatLinkFixerBot) ^|\n'
+		'^[Owner](http://www.reddit.com/user/' + config.get('General', 'owner') + ')  \n'
+		'^(Problems? Please message the owner or post in the subreddit.)'
 	)
 	retry_sleep = float(config.get('General', 'retrytime'))
 	exclusions = config.get('Reddit', 'exclude').strip().lower().split()
