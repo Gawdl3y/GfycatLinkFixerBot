@@ -100,15 +100,19 @@ class Search(object):
 					time.sleep(self.retry_sleep)
 
 def main():
-	submissions = praw.helpers.submission_stream(r, config.get('Reddit', 'subreddit'), limit = None)
-	for submission in submissions:
-		search = Search(submission)
-		if search.match is not None:
-			thread = Thread(target = search.run)
-			thread.start()
+	while True:
+		try:
+			submissions = praw.helpers.submission_stream(r, config.get('Reddit', 'subreddit'), limit = None)
+			for submission in submissions:
+				search = Search(submission)
+				if search.match is not None:
+					thread = Thread(target = search.run)
+					thread.start()
+		except KeyboardInterrupt:
+			break
+		except:
+			logger.exception('Error in main loop; restarting in 180 seconds')
+			time.sleep(180)
 
 if __name__ == '__main__':
-	try:
-		main()
-	except KeyboardInterrupt:
-		pass
+	main()
